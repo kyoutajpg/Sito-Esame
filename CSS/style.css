@@ -1,4 +1,3 @@
-
 /* --- FONT --- */
 @font-face { font-family: gothamblack; src: url('../Fonts/Gotham-Black.otf'); }
 @font-face { font-family: gothambook; src: url('../Fonts/GothamBook.ttf'); }
@@ -7,6 +6,7 @@
 @font-face { font-family: monmed; src: url('../Fonts/Montserrat-Medium.ttf'); }
 @font-face { font-family: kitora; src: url('../Fonts/Kitora.otf'); }
 
+/* --- BASE --- */
 html, body {
     scroll-behavior: smooth;
     margin: 0;
@@ -18,6 +18,7 @@ a {
     text-decoration: none; 
     color: rgb(240, 240, 240); 
 }
+
 ul { 
     list-style: none; 
     padding: 0; 
@@ -25,7 +26,6 @@ ul {
 }
 
 /* --- HEADER & NAV --- */
-
 header {
     position: fixed;
     top: 3%;
@@ -37,20 +37,28 @@ header {
 
 nav {
     background-color: #140030;
-    padding: 15px 20px;
+    padding: 15px 25px;
     width: 90%;
     border-radius: 10px;
     transition: background-color 0.3s ease-in-out;
     display: flex;
     justify-content: center; 
     align-items: center;
+    height: auto;
 }
 
-/* Gestione Menu Desktop */
 .menu {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 80px; 
+    justify-content: center;
+    gap: 80px;
+    list-style: none;
+}
+
+.menu-link {
+    display: block;
+    opacity: 1;
 }
 
 .menu li a {
@@ -59,33 +67,12 @@ nav {
     letter-spacing: 1px;
     font-size: 1rem;
     transition: 0.2s;
-    color:#f5f5f5;
+    color: #f5f5f5;
 }
 
 .menu li a:hover { 
     color: #FBBC0D; 
 }
-
-
-/* --- SEZIONI GENERALI --- */
-.container-fluid {
-    padding: 110px 2%;
-    background: #0c0c0c;
-    overflow: hidden;
-}
-
-/* Titoli sezioni */
-.section-title {
-    font-family: gothamblack;
-    font-size: 2.3rem;
-    margin-bottom: 30px;
-    text-align: left; 
-}
-
-/* Colori titoli */
-.text-blue { color: #382985; }
-.text-red { color: #E61F57; }
-.text-yellow { color: #FBBC0D; }
 
 /* --- HERO SECTION --- */
 .hero-wrapper {
@@ -113,13 +100,68 @@ nav {
 }
 
 .home-content h2 {
-    font-family: gothamblack;
+    font-family: kitora;
+    letter-spacing: 1px;
     font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 40px;
 }
 
-/* --- BOTTONI --- */
+/* --- UTILITIES --- */
+.section-title {
+    font-family: kitora;
+    letter-spacing: 1px;
+    font-size: 2.3rem;
+    margin-bottom: 30px;
+}
+
+.text-blue { color: #382985; }
+.text-red { color: #E61F57; }
+.text-yellow { color: #FBBC0D; }
+
+/* --- CARDS & BUTTONS --- */
+.bento-card {
+    background-color: rgb(235, 235, 235);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    position: relative;
+}
+
+.bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+    border-color: #d1d5db;
+}
+
+.service-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vw; 
+    max-height: 400px;
+    min-height: 250px;
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.service-card:hover { 
+    transform: scale(1.03); 
+}
+
+.service-card h2 {
+    font-family: gothamblack;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+.bg-branding { background-color: #E61F57; }
+.bg-web { background-color: #FBBC0D; }
+.bg-grafica { background-color: #382985; }
+
 .home-btn {
     background-color: #E61F57;
     color: white;
@@ -134,7 +176,10 @@ nav {
     font-family: gothamblack;
     transition: ease 0.2s;
 }
-.home-btn:hover { background-color: #c21949; color: white; }
+
+.home-btn:hover { 
+    background-color: #c21949; 
+}
 
 .submit-btn {
     background-color: #382985;
@@ -146,239 +191,123 @@ nav {
     width: 100%; 
     display: block;
     text-align: center;
-    font-family: gothamblack;
+    font-family: kitora;
+    letter-spacing: 1px;
     cursor: pointer;
     transition: ease-in-out 0.2s;
 }
-.submit-btn:hover { background-color: #281b64; }
 
-.branding-btn {
-    background-color: #FBBC0D;
-    color: white;
-    padding: 25px 0;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    width: 100%; 
-    display: block;
-    text-align: center;
-    font-family: gothamblack;
-    cursor: pointer;
-    transition: ease-in-out 0.2s;
-}
-.branding-btn:hover { background-color: #d9a30e; }
-
-.poster-btn {
-    background-color: #E61F57;
-    color: white;
-    padding: 25px 0;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    width: 100%; 
-    display: block;
-    text-align: center;
-    font-family: gothamblack;
-    cursor: pointer;
-    transition: ease-in-out 0.2s;
-}
-.poster-btn:hover { background-color: #b3113f; }
-
-
-/* --- SERVIZI CARDS --- */
-.service-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25vw; 
-    max-height: 400px;
-    min-height: 250px;
-    border-radius: 15px;
-    transition: transform 0.2s;
-}
-.service-card:hover { transform: scale(1.03); }
-
-.service-card h2 {
-    font-family: gothamblack;
-    font-size: 1.5rem;
-    color: white;
-    margin: 0;
-}
-/* Colori background specifici */
-.bg-branding { background-color: #E61F57; }
-.bg-web { background-color: #FBBC0D; }
-.bg-grafica { background-color: #382985; }
-
-.project-link {
-    color: white;
-    font-family: gothambold;
-    font-size: 1.5rem;
-    display: block;
+.submit-btn:hover { 
+    background-color: #281b64; 
 }
 
-/* --- FORM & CONTATTI --- */
-.profilebox img { width: 100%; border-radius: 15px; }
-
-.form-group input, .form-group textarea {
+/* --- FORM --- */
+.form-group input, 
+.form-group textarea {
     width: 100%;
     padding: 15px;
     border-radius: 10px;
     background-color: #FBBC0D;
     border: none;
-    color:  #382985;
+    color: #382985;
     box-sizing: border-box; 
     margin-bottom: 20px;
     font-family: mon;
 }
-.form-group textarea { height: 150px; resize: none; }
-.form-group input:focus, .form-group textarea:focus {
+
+.form-group textarea { 
+    height: 150px; 
+    resize: none; 
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
     outline: 3px solid #382985;
     transition: ease-in-out 0.1s;
 }
 
-input[type=email]::placeholder, input[type=text]::placeholder { color:#382985; }
-textarea::placeholder { color:#382985; }
-
-.mapsbox iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-    border-radius: 15px;
-    margin-bottom: 30px;
+input[type=email]::placeholder, 
+input[type=text]::placeholder,
+textarea::placeholder { 
+    color: #382985; 
 }
 
-/* width */
+/* --- ANIMATIONS --- */
+.status-dot {
+    height: 8px; 
+    width: 8px; 
+    background-color: #22c55e; 
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SCROLLBAR --- */
 ::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 10px; 
+    width: 10px;
+    border-radius: 10px; 
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-  background: #141414; 
+    background: #141414; 
 }
- 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
-  background: rgb(20, 0, 48); 
-  border-radius: 10px;
-  transition: ease-in-out 0.2s;
+    background: rgb(20, 0, 48); 
+    border-radius: 10px;
+    transition: ease-in-out 0.2s;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #210032; 
-
+    background: #210032; 
 }
-/* Classe base per le celle della griglia (Cards) */
-        .bento-card {
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            overflow: hidden;
-            position: relative;
-        }
 
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-        }
-
-        /* Badge di stato */
-        .status-dot {
-            height: 8px; width: 8px; background-color: #22c55e; border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-
-        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; }
-        .text-blue { color: #382985; }
-        .text-red { color: #E61F57; }
-        .service-card { padding: 2rem; border-radius: 1rem; color: white; text-align: center; font-weight: bold; }
-        .bg-branding { background: #382985; }
-        .bg-grafica { background: #E61F57; }
-        .bg-web { background: #140030; }
-        .submit-btn { background: #E61F57; color: white; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: bold; margin-top: 1rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1rem; background: #1a1a1a; border: 1px solid #333; border-radius: 0.5rem; color: white; margin-bottom: 1rem; }
-
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        /* Classe base per le celle della griglia (Cards) */
-        .bento-card {
-            background-color: rgb(235, 235, 235);
-            border-radius: 1.5rem; /* Angoli molto arrotondati (24px) */
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid #f0f0f0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
-            border-color: #d1d5db;
-        }
-
-        /* Utility per le immagini dentro le card */
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-        }
-
-        /* Badge di stato */
-        .status-dot {
-            height: 8px; width: 8px; background-color: #22c55e; border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
-
-
-
-
-
-/* --- RESPONSIVE MOBILE --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
     header {
-        top:2%; 
-        padding: 10px 0; 
-        background: transparent; }
-    nav { 
-        width: 90%; 
-     }
+        top: 4%; 
+    }
+     
+    nav {   
+        width: 90%;  
+        overflow: hidden;
+        padding-top: 0; 
+        padding-bottom: 25px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .symbol {
+        order: -1;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-content h2 { 
+        font-size: 2rem; 
+    }
     
-    .container-fluid { padding: 25% 2%; }
-    .home-content h2 { font-size: 2rem; }
-    .home-btn { width: 100%; } 
-    .service-card, .portfolio-item { height: 80vw; } 
+    .home-btn { 
+        width: 100%; 
+    } 
+    
+    .service-card { 
+        height: 80vw; 
+    } 
 }
-
-
-
-

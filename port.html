@@ -3,229 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oden Graphic Design</title>
+    <title>Portfolio - Oden Graphic Design</title>
     <link rel="stylesheet" href="CSS/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
+<body class="bg-black">
+    <!-- HEADER -->
     <header>
         <nav id="navbar">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li class="symbol"><img src="Links/Risorsa 11.svg" style="width: 25px;"></li>
-                <li><a href="port.html">Portfolio</a></li>
+                <li class="menu-link menu-item"><a href="index.html">Home</a></li> 
+                <li class="symbol" id="logo-trigger">
+                    <img src="Links/Risorsa 11.svg" style="width: 25px;" alt="Logo"> 
+                </li>
+                <li class="menu-link menu-item"><a href="port.html">Portfolio</a></li>
             </ul>
         </nav>
     </header>
     
-    <div id="loading" class="h-screen w-screen absolute bg-white z-20">
-        <div class="flex justify-center items-center h-full">
-            <img src="/Links/Risorsa 11.svg" style="width: 32px;" alt="">
-        </div>
+    <!-- LOADING -->
+    <div id="loading" class="h-screen w-screen fixed bg-white z-20 flex justify-center items-center">
+        <img src="Links/Risorsa 11.svg" style="width: 32px;" alt="Loading">
     </div>
 
-    <div class="container-fluid md:pt-[120px]">
-        <div class="container mx-auto z-1">
+    <!-- PORTFOLIO GRID -->
+    <div class="bg-black md:pt-[120px] pt-[120px] pb-[60px]">
+        <div class="container mx-auto">
             <div id="columns" class=""></div>
         </div>
     </div>
 
-    <footer class="bg-inherit">
-        <div class="footer-content text-center p-4 text-white bg-[#140030] mx-auto">
+    <!-- FOOTER -->
+    <footer class="bg-[#140030]">
+        <div class="text-center p-4 text-white">
             <p>&copy; 2026 Oden Graphic Design. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
-
     <script>
         const loading = document.getElementById('loading');
         const columnsContainer = document.getElementById('columns');
+        const proportions = ["16/9", "4/3", "1/1", "3/4", "9/16"];
 
-        // 1. DATABASE PROGETTI
-        // Per ogni progetto puoi definire: url, title, original (true/false) e il tuo HTML/CSS personalizzato
+        // DATABASE PROGETTI
         const myProjects = [
-            //CANTIERE
-            { 
+            {
                 url: 'Links/Cantiere Icon.webp', 
-                title: 'Cantiere Crafico', 
+                title: 'Cantiere Grafico', 
                 original: false,
                 html: `
-                    <img src="Links/Cantiere/Brand Guidlines2.webp"  loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines3.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines4.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines5.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines6.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines7.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines8.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines9.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines10.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines11.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines12.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines13.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines14.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines15.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines16.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines17.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines18.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines19.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines20.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines21.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines22.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines23.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines24.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines25.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines26.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines27.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines28.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines29.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines30.webp" class="w-full block" loading="lazy">
-                <img src="Links/Cantiere/Brand Guidlines31.webp" class="w-full block" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines2.webp" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines3.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines4.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines5.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines6.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines7.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines8.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines9.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines10.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines11.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines12.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines13.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines14.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines15.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines16.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines17.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines18.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines19.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines20.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines21.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines22.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines23.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines24.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines25.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines26.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines27.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines28.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines29.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines30.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Cantiere/Brand Guidlines31.webp" class="w-full rounded-b-xl mb-4" loading="lazy">
                 `
             },
-            //ANTSY
-            { 
-                url: '/Links/ANTSY Icon.webp', 
+            {
+                url: 'Links/ANTSY Icon.webp', 
                 title: 'Antsy Brand Identity', 
                 original: false,
                 html: `
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 2.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 3.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 4.webp"  loading="lazy">
-                <img src="Links/ANTSY/Free_Stationery_Mockup_2.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 5.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 6.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 7.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 9.webp"  loading="lazy">
-                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 19.webp"  loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1.webp" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 2.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 3.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 4.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/Free_Stationery_Mockup_2.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 5.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 6.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 7.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 9.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/ANTSY/presentazione_Tavola disegno 1 copia 19.webp" class="w-full rounded-b-xl mb-4" loading="lazy">
                 `
             },
-            //MANIFESTO
-            { 
-                url: '/Links/Manifesto 1.webp', 
+            {
+                url: 'Links/Manifesto 1.webp', 
                 title: 'Manifesto Studio', 
                 original: true,
                 html: `
-                <div class="flex justify-center items-center w-80 mx-auto">
-                    <img src="/Links/Manifesto 1.webp" class="rounded-xl" alt="Immagine Manifesto">
+                <div class="flex justify-center items-center">
+                    <img src="Links/Manifesto 1.webp" class="rounded-xl max-w-md" alt="Manifesto Studio">
                 </div>   
                 `
             },
-            //GAYLE
-            { 
-                url: '/Links/Gayle render.mp4', 
+            {
+                url: 'Links/Gayle render.mp4', 
                 title: 'Gayle Render', 
                 original: true,
                 html: `
-                    <div class="flex justify-center items-center">
-                        <video width="320" height="240" class="rounded-xl" autoplay loop>
-                            <source src="/Links/Gayle render.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                         `
+                <div class="flex justify-center items-center">
+                    <video class="rounded-xl max-w-md" autoplay loop muted>
+                        <source src="Links/Gayle render.mp4" type="video/mp4">
+                    </video>
+                </div>
+                `
             },
-           
-            // FRATELLI VEGGIES
-            { 
-            url: '/Links/Fratelli.png', 
-            title: 'Fratelli Veggies', 
-            link: 'progetto-1.html',
-            html: `
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia.webp" loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 2.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 5.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 6.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 7.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 8.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 9.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-12.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-13.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-14.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-16.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-18.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-11.webp"  loading="lazy">
-                <img src="Links/Fratelli Veggies/pres1-17.webp"  loading="lazy">
-            `
+            {
+                url: 'Links/Fratelli Icon.webp', 
+                title: 'Fratelli Veggies', 
+                original: false,
+                html: `
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1.webp" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 2.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 5.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 6.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 7.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 8.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1_Tavola disegno 1 copia 9.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-12.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-13.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-14.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-16.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-18.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-11.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Fratelli Veggies/pres1-17.webp" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `
             },
-            // BEAR EXPRESS
-            { 
-                url: '/Links/Bear Express Icon.webp', 
+            {
+                url: 'Links/Bear Express Icon.webp', 
                 title: 'Bear Express', 
-                link: 'progetto-3.html',
+                original: false,
                 html: `
-                <img src="Links/Bear Express/pRESENTAZIONE.webp" id="bearexpress" loading="lazy" class="w-full block rounded-t-2xl">
-                <img src="Links/Bear Express/pRESENTAZIONE5.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE6.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE7.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE8.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE9.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE10.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE11.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE12.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE13.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE14.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE15.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE16.webp" class="w-full block" loading="lazy">
-                <img src="Links/Bear Express/pRESENTAZIONE17.webp" class="w-full block rounded-b-2xl" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE.webp" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE5.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE6.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE7.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE8.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE9.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE10.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE11.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE12.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE13.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE14.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE15.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE16.webp" class="w-full mb-4" loading="lazy">
+                <img src="Links/Bear Express/pRESENTAZIONE17.webp" class="w-full rounded-b-xl mb-4" loading="lazy">
                 `
-
             },
-            // KISS PIZZA
-            { 
-                url: '/Links/Kiss Pizza Icon.webp', 
+            {
+                url: 'Links/Kiss Pizza Icon.webp', 
                 title: 'Kiss Pizza', 
-                link: 'progetto-3.html',
-                html:  ` `,
+                original: false,
+                html: `
+                <img src="Links/Pizza/1.avif" class="w-full rounded-t-xl mb-4" loading="lazy"> 
+                <img src="Links/Pizza/2.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/3.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/4.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/5.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/6.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/7.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/8.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/9.avif" class="w-full mb-4" loading="lazy"> 
+                <img src="Links/Pizza/10.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/11.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/12.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/13.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/14.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/15.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/16.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/17.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/18.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/19.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/20.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pizza/21.avif" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `
             },
-            { url: '/Links/Pigra Icon.webp', title: 'Fotografia Pigra', link: 'progetto-3.html' },
-            { url: '/Links/Zucca Icon.webp', title: 'Festa della Zucca di Melara', link: 'progetto-3.html' },
-            //PROGETTO PESCE
-            { 
-                url: '/Links/Progetto Pesce V1.mp4', 
+            {
+                url: 'Links/Pigra Icon.webp', 
+                title: 'Fotografia Pigra', 
+                original: false,
+                html: `
+                <img src="Links/Pigra/1.avif" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Pigra/2.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/3.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/4.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/5.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/6.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/7.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/8.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/9.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Pigra/10.avif" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `
+            },
+            {
+                url: 'Links/Zucca Icon.webp', 
+                title: 'Festa della Zucca di Melara', 
+                original: false,
+                html: `
+                <img src="Links/Zucca/1.avif" class="w-full rounded-t-xl mb-4" loading="lazy"> 
+                <img src="Links/Zucca/2.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/3.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/4.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/5.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/6.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/7.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/8.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/9.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Zucca/10.avif" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `
+            },
+            {
+                url: 'Links/Progetto Pesce V1.mp4', 
                 title: 'Animazione Pesce', 
-                link: 'progetto-3.html', 
                 original: true,
                 html: `
-                <video autoplay class="w-full h-auto rounded-xl">
-                    <source src="/Links/Progetto Pesce V1.mp4" type="video/mp4">
-                </video>
+                <div class="flex justify-center items-center">
+                    <video class="rounded-xl max-w-2xl" autoplay loop muted>
+                        <source src="Links/Progetto Pesce V1.mp4" type="video/mp4">
+                    </video>
+                </div>
                 `
             },
-            //ESERCIZIO 3D
-            { 
-                url: '/Links/Esercizio 3D.mp4', 
+            {
+                url: 'Links/Esercizio 3D.mp4', 
                 title: 'Ghiaccio', 
-                link: 'progetto-3.html', 
                 original: true,
                 html: `
-                <video autoplay class="w-full h-auto rounded-xl">
-                    <source src="/Links/Esercizio 3D.mp4" type="video/mp4">
-                </video>
+                <div class="flex justify-center items-center">
+                    <video class="rounded-xl max-w-2xl" autoplay loop muted>
+                        <source src="Links/Esercizio 3D.mp4" type="video/mp4">
+                    </video>
+                </div>
                 `
             },
-            { url: '/Links/Simonini.jpg', title: 'Amministrazioni Simonini', link: 'progetto-3.html'},
-            { url: '/Links/Ghibli.png', title: 'Profumi Studio Ghibli', link: 'progetto-3.html'},
-            { url: '/Links/Arborum.jpg', title: 'Arborum Branding', link: 'progetto-3.html'},
+            {
+                url: 'Links/Simonini.jpg', 
+                title: 'Amministrazioni Simonini', 
+                original: false,
+                html: `
+                <img src="Links/Luca/1.avif" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Luca/2.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Luca/3.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Luca/4.avif" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `   
+            },
+            {
+                url: 'Links/Ghibli.avif', 
+                title: 'Profumi Studio Ghibli', 
+                original: false,
+                html: `
+                <img src="Links/Ghibli/1.avif" class="w-full rounded-t-xl mb-4" loading="lazy">
+                <img src="Links/Ghibli/2.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Ghibli/3.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Ghibli/4.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Ghibli/5.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Ghibli/6.avif" class="w-full mb-4" loading="lazy">
+                <img src="Links/Ghibli/7.avif" class="w-full rounded-b-xl mb-4" loading="lazy">
+                `
+            },
+            {
+                url: 'Links/Arborum.jpg', 
+                title: 'Arborum Branding', 
+                original: false,
+                html: `
+                <img src="Links/Arborum.jpg" class="w-full rounded-xl" loading="lazy" alt="Arborum Branding">
+                `
+            }
         ];
 
-        const proportions = [1, 1.5, 0.75, 1.33, 0.8];
-
-        // 2. FUNZIONE PER APRIRE IL MODALE UNIVERSALE
-        const aprireModal = (contenutoHtml) => {
+        // FUNZIONE MODALE
+        const aprireModal = (html) => {
             const modal = document.createElement('div');
             modal.className = "fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10";
             modal.style.animation = "fadeIn 0.4s ease-out";
             
             modal.innerHTML = `
-                <div class="bg-[#0a0a0a] text-white w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] border border-white/5 shadow-2xl relative mt-[150px]">
+                <div class="bg-[#0a0a0a] text-white w-full max-w-6xl max-h-[80vh] overflow-y-auto rounded-[2.5rem] border border-white/5 shadow-2xl relative mt-[100px]">
                     <button id="closeModal" class="sticky top-6 float-right mr-6 z-50 bg-white/10 hover:bg-white text-white hover:text-black p-3 rounded-full transition-all">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
                     </button>
-                    
-                    <div class="p-10 md:p-20">
-                        ${contenutoHtml}
+                    <div class="p-8 md:p-16">
+                        ${html}
                     </div>
                 </div>
             `;
@@ -242,7 +317,7 @@
             modal.onclick = (e) => { if(e.target === modal) chiudi(); };
         };
 
-        // 3. FUNZIONE SETUP GRIGLIA
+        // SETUP GRIGLIA
         const setup = () => {
             columnsContainer.innerHTML = '';
             myProjects.sort(() => Math.random() - 0.5);
@@ -257,47 +332,36 @@
 
             myProjects.forEach((project, i) => {
                 const card = document.createElement('div');
-                card.className = "group relative block w-full overflow-hidden rounded-2xl transition-all duration-500 hover:scale-105 z-10 bg-[#0c0c0c] shadow-xl cursor-pointer";
+                card.className = "group relative block w-full overflow-hidden rounded-2xl transition-all duration-500 hover:scale-105 bg-[#0c0c0c] shadow-xl cursor-pointer";
 
-                // Se è una card speciale (Chi sono / Contatti)
-                if (project.type === 'special') {
-                    card.style.aspectRatio = "1 / 1";
-                    card.style.backgroundColor = project.bgColor;
-                    card.className += " flex flex-col justify-center items-center p-8 text-white text-center";
-                    card.innerHTML = `<h2 class="font-bold text-2xl uppercase" style="font-family:'gothambold'">${project.title}</h2>`;
-                    card.onclick = () => aprireModal(project.html);
-                } 
-                // Se è un progetto normale (Media)
-                else {
-                    if (!project.original) {
-                        card.style.aspectRatio = proportions[i % proportions.length];
-                    }
-
-                    let media;
-                    const isVideo = project.url.toLowerCase().endsWith('.mp4');
-                    if (isVideo) {
-                        media = document.createElement('video');
-                        media.src = project.url;
-                        media.autoplay = media.loop = media.muted = true;
-                        media.setAttribute('playsinline', ''); 
-                    } else {
-                        media = document.createElement('img');
-                        media.src = project.url;
-                    }
-
-                    media.className = project.original ? "w-full h-auto block" : "w-full h-full object-cover block";
-                    media.classList.add("transition-transform", "duration-700", "group-hover:scale-110");
-
-                    const overlay = document.createElement('div');
-                    overlay.className = "absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center";
-                    overlay.innerHTML = `<h3 class="text-white font-bold text-lg uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500" style="font-family:'gothambold'">${project.title}</h3>`;
-
-                    card.appendChild(media);
-                    card.appendChild(overlay);
-                    
-                    // Ogni card apre il modale
-                    card.onclick = () => aprireModal(project.html);
+                if (!project.original) {
+                    card.style.aspectRatio = proportions[i % proportions.length];
                 }
+
+                let media;
+                const isVideo = project.url.toLowerCase().endsWith('.mp4');
+                
+                if (isVideo) {
+                    media = document.createElement('video');
+                    media.src = project.url;
+                    media.autoplay = media.loop = media.muted = true;
+                    media.setAttribute('playsinline', ''); 
+                } else {
+                    media = document.createElement('img');
+                    media.src = project.url;
+                    media.alt = project.title;
+                }
+
+                media.className = project.original ? "w-full h-auto block" : "w-full h-full object-cover block";
+                media.classList.add("transition-transform", "duration-700", "group-hover:scale-110");
+
+                const overlay = document.createElement('div');
+                overlay.className = "absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center";
+                overlay.innerHTML = `<h3 class="text-white font-bold text-lg uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500" style="font-family:'kitora'">${project.title}</h3>`;
+
+                card.appendChild(media);
+                card.appendChild(overlay);
+                card.onclick = () => aprireModal(project.html);
 
                 const targetColumn = columnsContainer.children[i % count];
                 targetColumn.appendChild(card);
@@ -307,7 +371,6 @@
             loading.style.display = 'none';
         };
 
-        // 4. ESECUZIONE
         setup();
 
         let timer;
@@ -315,6 +378,56 @@
             loading.style.display = 'block';
             clearTimeout(timer);
             timer = setTimeout(setup, 300);
+        });
+
+        // MENU MOBILE
+        const navbar = document.getElementById('navbar');
+        const logoTrigger = document.getElementById('logo-trigger');
+        const menuItems = document.querySelectorAll('.menu-item');
+        let isMenuOpen = false;
+
+        logoTrigger.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                const tl = gsap.timeline();
+
+                if (!isMenuOpen) {
+                    gsap.set(menuItems, { display: 'block' });
+                    
+                    tl.to(navbar, {
+                        height: "auto", 
+                        duration: 0.5,
+                        ease: "power2.out"
+                    })
+                    .to(menuItems, {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    }, "-=0.3");
+                } else {
+                    tl.to(menuItems, {
+                        opacity: 0,
+                        duration: 0.2
+                    })
+                    .to(navbar, {
+                        height: 60,
+                        duration: 0.4,
+                        ease: "power2.inOut",
+                        onComplete: () => {
+                            gsap.set(menuItems, { display: 'none' });
+                        }
+                    });
+                }
+                isMenuOpen = !isMenuOpen;
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                gsap.set([navbar, menuItems], { clearProps: "all" });
+                isMenuOpen = false;
+            }
         });
     </script>
 </body>
