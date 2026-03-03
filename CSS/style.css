@@ -282,25 +282,40 @@ textarea::placeholder {
         top: 4%; 
     }
 
-    nav {   
-        width: 90%;  
-        height: 80px;
+
+
+    nav {
+        
+        padding: 0 20px; 
+        height: 80px; 
         overflow: hidden;
-        padding-top: 0px; 
-        padding-bottom: 0px;
+        display: flex;
+        align-items: flex-start; 
+        justify-content: center;
+       
     }
 
     .menu {
         flex-direction: column;
         gap: 20px;
-        padding: 10px;
+        padding-top: 20px; 
+        width: 100%;
+    }
+
+    .menu-item {
+        display: none; /* Nasconde Home e Portfolio */
+        opacity: 0;
+        text-align: center;
+        padding-bottom: 15px;
     }
 
     .symbol {
         order: -1;
-        width: 30px;
+        height: 40px;
         display: flex;
         justify-content: center;
+        margin: 0;
+        width: 100%;
     }
 
     .home-content h2 { 
